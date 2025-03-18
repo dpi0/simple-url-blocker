@@ -3,7 +3,14 @@
   "name": "Simple URL Blocker",
   "version": "1.0",
   "description": "Blocks access to specified URLs",
-  "permissions": ["webRequest", "webRequestBlocking", "<all_urls>", "storage"],
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>",
+    "storage",
+    "contextMenus",
+    "tabs"
+  ],
   "browser_action": {
     "default_popup": "popup.html",
     "default_title": "URL Blocker"

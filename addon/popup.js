@@ -5,11 +5,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const statusDiv = document.getElementById("status");
 
     // Load the current list of blocked URLs
-    browser.runtime.sendMessage({ action: "getUrls" }).then((response) => {
-        if (response && response.urls) {
-            urlListTextarea.value = response.urls.join("\n");
-        }
-    });
+    loadBlockedUrls();
+
+    function loadBlockedUrls() {
+        browser.runtime.sendMessage({ action: "getUrls" }).then((response) => {
+            if (response && response.urls) {
+                urlListTextarea.value = response.urls.join("\n");
+            }
+        });
+    }
 
     // Save the list when the button is clicked
     saveButton.addEventListener("click", function() {

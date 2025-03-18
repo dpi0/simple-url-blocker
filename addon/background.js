@@ -8,6 +8,45 @@ browser.storage.local.get("blockedUrls").then((result) => {
     }
 });
 
+// Create context menu items
+browser.contextMenus.create({
+    id: "block-current-url",
+    title: "Block this URL",
+    contexts: ["page"],
+});
+
+browser.contextMenus.create({
+    id: "block-current-domain",
+    title: "Block entire site",
+    contexts: ["page"],
+});
+
+// Handle context menu clicks
+browser.contextMenus.onClicked.addListener((info, tab) => {
+    if (info.menuItemId === "block-current-url") {
+        // Add exact URL to block list
+        addUrlToBlockList(tab.url);
+    } else if (info.menuItemId === "block-current-domain") {
+        // Add wildcard URL to block list
+        const url = new URL(tab.url);
+        const domainUrl = `${url.protocol}//${url.hostname}/*`;
+        addUrlToBlockList(domainUrl);
+    }
+});
+
+// Function to add a URL to the block list
+function addUrlToBlockList(url) {
+    if (!blockedUrls.includes(url)) {
+        blockedUrls.push(url);
+        updateBlockedUrls(blockedUrls);
+
+        // Show notification
+        browser.tabs.create({
+            url: "popup.html",
+        });
+    }
+}
+
 // Listen for web requests and block matching URLs
 browser.webRequest.onBeforeRequest.addListener(
     (details) => {
