@@ -24,6 +24,16 @@
 
 ## Screenshots
 
+### Block an entire site using context menu
+
+<img src="https://github.com/user-attachments/assets/2cbccab8-56c5-43c3-becf-13e442ec8d4f" width="500">
+
+<img src="https://github.com/user-attachments/assets/e2a9d942-70ff-4e28-92a1-81bcb9509996" width="500">
+
+### Manage blocklist
+
+<img src="https://github.com/user-attachments/assets/793b6897-9d83-4e11-9869-c5b008c0b48e" width="200" height="300">
+
 ## Contributing
 
 Contributions are welcome! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
